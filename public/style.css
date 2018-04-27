@@ -1,0 +1,19 @@
+body{   
+    background-color: black;
+    color: lightgreen;
+    text-align: center;
+}
+
+input{
+    border-radius: 5px;
+    margin: 5px;
+}
+
+ul{
+    list-style-type: none;
+    text-align: right;
+    margin: 5px 50px 0px auto;
+}
+
+
+    

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/style">
+</head>
+<body>
+    <h1>Chat AJAX on post request with "application/x-www-form-urlencoded"</h1>
+    <input type="text" id="input"><br>
+    <input type="button" id="button" value="Submit"><br>
+    <input type="button" id="reset" value="Reset"><br>
+    <ul id="ul">
+
+    </ul>
+    <script>
+
+        "use strict";
+
+        (function() {
+            window.message = '';
+            var ul = document.getElementById('ul');
+            var button = document.getElementById('button');
+            var reset = document.getElementById('reset');
+            button.addEventListener('click', func);
+            reset.addEventListener('click', res);
+        })();
+
+        function res() {
+            ul.innerHTML = '';
+        }
+        
+        function func() {
+            var body = encodeURIComponent(input.value);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200){
+                    // empty
+                };  
+            };
+            xhttp.open('POST', '/post', true);
+            xhttp.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+            xhttp.send(body);
+        };
+
+        
+        (function sending() {
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200){
+                    var el = this;
+                    createLi(el); 
+                };
+            };
+            xhttp.open('POST', '/post/api', true);
+            xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhttp.send('Empty');
+            setTimeout(sending, 1000);
+        })();
+
+        function createLi(el) {
+            if(el.responseText != message){
+                message = el.responseText;
+                var li = document.createElement('li');
+                li.innerHTML = el.responseText;
+                ul.appendChild(li);
+            }; 
+        };
+
+    </script>
+</body>
+</html>

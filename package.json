@@ -1,0 +1,15 @@
+{
+  "name": "ajax_post_request",
+  "version": "1.0.0",
+  "description": "Ajax_Post",
+  "main": "server.js",
+  "scripts": {
+    "test": "ajax",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "post"
+  ],
+  "author": "Imran",
+  "license": "ISC"
+}
